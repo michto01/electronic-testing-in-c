@@ -143,27 +143,5 @@ void printAnswers  ( Question* question ) {
     
 }
 
-/**
- *  Object lifecycle
- *
- *  @param ans <#ans description#>
- */
 
-void freeAnswer(Answer* ans) {
-    free(ans->description);
-    free(ans);
-}
-
-void freeQuestion(Question* question) {
-    
-    if ( question->answers != NULL ) {
-        while ( question->count >= 0 ) {
-            free(question->answers[question->count--]);
-        }
-    }
-    
-    free(question->answers);
-    free(question->description);
-    free(question);
-}
 
