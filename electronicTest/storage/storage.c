@@ -17,24 +17,31 @@ Question** extract( const char* filename, int* length) {
     Question** questions = NULL;
     
     if ( ( file = fopen(filename, "r") ) == NULL ) {
+        printf("File not found or permission denied.\n");
         return NULL;
     }
     
-    unsigned long questionCount;
+    int questionCount;
     
-    if ( fscanf( file, "%lu", &questionCount ) != EOF ) {
+    if ( fscanf( file, "%d", &questionCount ) != EOF ) {
         
         if ( NULL == (questions = (Question**) malloc( questionCount * sizeof(Question*) )) ) {
             printf("Questions>>> Malloc failed\n");
             return NULL;
         }
         
-        unsigned long id     = 0;        // Persistant id of question;
+        int     id           = 0;        // Persistant id of question;
         char    isQuestion   = FALSE;    // Check if question is the valid
         int     answersCount = 0;        // How many answers this question have
         char*   questionText = NULL;     // What is the Question description
+    
         
-        while( fscanf( file, "\n%c%d %s\n", &isQuestion, &answersCount, questionText ) != EOF ) {
+        if ( NULL == (questionText = (char*) malloc( MAX_STR * sizeof(char) ) ) ) {
+            printf("QuestionText>>> Malloc failed");
+            return NULL;
+        }
+        
+        while( fscanf( file, "\n%c%d %255[^\n]\n", &isQuestion, &answersCount, questionText ) != EOF ) {
             
             if ( isQuestion == QUESTION_SYMBOL ) {
                 
@@ -58,7 +65,13 @@ Question** extract( const char* filename, int* length) {
                     ans->isAnswered =  FALSE; // Security null-ation
                     ans->wasCorrect = -1; // Secutiry null-ation
                     
-                    fscanf( file, "%c%c %s", &isAnswer, &(ans->isCorrect), ans->description );
+                    if ( NULL == (ans->description = (char*) malloc( MAX_STR * sizeof(char) ) ) ) {
+                        printf("Ans->description>>> Malloc failed");
+                        return NULL;
+                    }
+                    
+                    // Read 2 characters then output the rest to the STRING (max-size:255)
+                    fscanf( file, "%c%c %255[^\n]\n", &isAnswer, &(ans->isCorrect), ans->description );
                     
                     if ( isAnswer == ANSWER_SYMBOL ) {
                         ans->id = i;
@@ -76,6 +89,16 @@ Question** extract( const char* filename, int* length) {
                 question->answers     = answers;
                 question->count       = answersCount;
                 question->description = questionText;
+                
+                //Initalize new string buffer for next iteration
+                if ( NULL == (questionText = (char*) malloc( MAX_STR * sizeof(char) ) ) ) {
+                    printf("QuestionText>>> Malloc failed");
+                    return NULL;
+                }
+                
+#ifndef N_DEBUG
+                printf("< %d %d %s>", question->id, question->count, question->description);
+#endif
                 
                 if ( question->answers != NULL ) {
                     questions[id++] = question;
@@ -109,7 +132,7 @@ int store( const char* filename, Question** questions, int length ) {
         /*
          * #3 Very Important question?
          */
-        fprintf(file, "\n#%d %s\n", questions[i]->count,questions[i]->description);
+        fprintf( file, "\n#%d %s\n", questions[i]->count, questions[i]->description );
         
         int tmpCount = questions[i]->count;
         
@@ -118,7 +141,7 @@ int store( const char* filename, Question** questions, int length ) {
              * *$ Correct Answer
              * *  Bad Answer
              */
-            fprintf(file, "*%c %s\n", questions[i]->answers[j]->isCorrect ? '$': ' ', questions[i]->answers[j]->description );
+            fprintf( file, "*%c %s\n", questions[i]->answers[j]->isCorrect ? '$': ' ', questions[i]->answers[j]->description );
         }
     }
     

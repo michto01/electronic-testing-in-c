@@ -16,6 +16,8 @@
 #define   ANSWER_SYMBOL '*'
 #define  CORRECT_SYMBOL '$'
 
+#define MAX_STR 255
+
 #define TRUE  1
 #define FALSE 0
 

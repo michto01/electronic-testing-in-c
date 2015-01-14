@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     int testLength;
-    Question** test = extract("math.test", &testLength);
+    Question** test = extract("/Developer/gatema/Experiments/electronicTest/electronicTest/math.test", &testLength);
     
     printf("App initialized ... \n");
     
@@ -19,24 +19,24 @@ int main(int argc, const char * argv[]) {
         printQuestion(test[i]);
     }
     
-    //int kk = store("new.math.test", test, testLength);
+    int kk = store("/Developer/gatema/Experiments/electronicTest/electronicTest/new.math.test", test, testLength);
     
     
     return 0;
 }
 
 void printAnswers  ( Question* question ) {
-    printf("#-------------------------------------#");
+    printf("#-------------------------------------#\n");
     
     for ( int i = 0; i < question->count; i++ ) {
-        printf( "# %lu %s", question->answers[i]->id, question->answers[i]->description );
+        printf( "# %i %s\n", question->answers[i]->id, question->answers[i]->description );
     }
     
-    printf("#-------------------------------------#");
+    printf("#-------------------------------------#\n");
 }
 
 void printQuestion ( Question* question ) {
-    printf( "%s", question->description );
+    printf( "%s\n", question->description );
     printAnswers(question);
 }
 

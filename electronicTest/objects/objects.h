@@ -10,7 +10,7 @@
 #define electronicTest_objects_h
 
 typedef struct _answer {
-    unsigned   long id;
+    int        id;
     char       isCorrect;
     char       isAnswered;
     char       wasCorrect;
@@ -18,7 +18,7 @@ typedef struct _answer {
 } Answer;
 
 typedef struct _question {
-    unsigned   long id;
+    int        id;
     char*      description;
     int        count;
     Answer**   answers;
