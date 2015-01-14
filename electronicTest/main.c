@@ -5,6 +5,7 @@
 //  Created by Lucie Urbanova on 14/01/15.
 //  Copyright (c) 2015 lucieurbanova.cz. All rights reserved.
 //
+#define N_DEBUG 1
 
 #include <stdio.h>
 #include "etests.h"
@@ -23,6 +24,10 @@ int main(int argc, const char * argv[]) {
     
     
     return 0;
+}
+
+Question* createQuestion() {
+    Question* question = 
 }
 
 void printAnswers  ( Question* question ) {
