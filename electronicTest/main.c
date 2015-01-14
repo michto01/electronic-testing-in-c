@@ -14,6 +14,8 @@ int main(int argc, const char * argv[]) {
     Question** test = extract("math.test", &testLength);
     
     
+    int kk = store("new.math.test", test, testLength);
+    
     
     return 0;
 }

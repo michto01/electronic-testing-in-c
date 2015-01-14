@@ -45,17 +45,20 @@ Question**  extract (const char*, int*); // read questions from file + show useo
  *   Object Lifecycle
  */
 
-void freeAnswer(Answer*);
-void freeQuestion(Question*);
+void freeAnswer   (Answer*);
+void freeQuestion (Question*);
 
 /*
  *   Controllers
  */
 
-double      scoreQuestion(Question*);    // percentage from the question correct/correctAnsers * 100;
+double      scoreQuestion  (Question*);    // percentage from the question correct/correctAnsers * 100;
+Answer**    correctAnswers (Answer**);
 
+/*
+ *   Presentation layer
+ */
+void        printQuestion (Question*);
 
-
-Answer** correctAnswers(Answer**);
 
 #endif
