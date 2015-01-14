@@ -62,39 +62,6 @@ bool ds_putc( dynstr* s, char c ) {
     }
 }
 
-bool ds_putc_codepoint( dynstr* s, int cp ) {
-    
-    if ( cp < 0 || cp > 0x10ffff ) {
-        return false;
-    }
-    else if ( cp < 0x80 )  {
-        return ds_putc(s, cp & 0x7F);
-    }
-    else if ( cp < 0x800 ) {
-        if ( !ds_resize(s, 2) )
-            return false;
-        ds_putc_unsecure(s, 0xC0 | ((cp >> 6) & 0x1F));
-        ds_putc_unsecure(s, 0x80 |  (cp & 0x3F));
-    }
-    else if (cp < 0x10000) {
-        if ( !ds_resize(s, 3) )
-            return false;
-        ds_putc_unsecure(s, 0xE0 | ((cp >> 12) & 0xF));
-        ds_putc_unsecure(s, 0x80 | ((cp >> 6)  & 0x3F));
-        ds_putc_unsecure(s, 0x80 |  (cp & 0x3F));
-    }
-    else {
-        if ( !ds_resize(s, 4) )
-            return false;
-        ds_putc_unsecure(s, 0xF0 | ((cp >> 18) & 0x7));
-        ds_putc_unsecure(s, 0x80 | ((cp >> 12) & 0x3F));
-        ds_putc_unsecure(s, 0x80 | ((cp >> 6)  & 0x3F));
-        ds_putc_unsecure(s, 0x80 |  (cp & 0x3F));
-    }
-    
-    return true;
-}
-
 bool ds_finnish( dynstr* s ) {
     if ( !ds_resize(s, 1) ) {
         return false;

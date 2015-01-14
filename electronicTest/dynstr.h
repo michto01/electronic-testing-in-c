@@ -18,25 +18,16 @@ typedef struct {
     size_t length;
 } dynstr;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-    
-    dynstr* ds_create();
-    void    ds_destroy( dynstr* );
-    
-    static inline void ds_putc_unsecure( dynstr* s, char c ) {
-        *(s->chars + s->length++) = c;
-    }
-    
-    bool    ds_resize         ( dynstr*, size_t );
-    bool    ds_putc           ( dynstr*, char );
-    bool    ds_putc_codepoint ( dynstr*, int );
-    bool    ds_finnish        ( dynstr* );
-    
-#ifdef __cplusplus
+dynstr* ds_create();
+void    ds_destroy( dynstr* );
+
+static inline void ds_putc_unsecure( dynstr* s, char c ) {
+    *(s->chars + s->length++) = c;
 }
-#endif
+
+bool    ds_resize         ( dynstr*, size_t );
+bool    ds_putc           ( dynstr*, char );
+bool    ds_finnish        ( dynstr* );
 
 
 #endif /* defined(__rdf__dynstr__) */

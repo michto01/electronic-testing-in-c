@@ -7,3 +7,11 @@
 //
 
 #include "etests.h"
+
+
+Answer** correctAnswers(Answer** root) {
+    Answer** correct_answers;
+    for (int ; <#condition#>; <#increment#>) {
+        <#statements#>
+    }
+}
