@@ -66,12 +66,12 @@
 		B5CAF3881A66EE7800104B69 /* electronicTest */ = {
 			isa = PBXGroup;
 			children = (
+				B5CAF39C1A6723D100104B69 /* objects */,
+				B5CAF39A1A67235F00104B69 /* storage */,
 				B5CAF3891A66EE7800104B69 /* main.c */,
 				B5CAF3901A66EEA700104B69 /* etests.h */,
-				B5CAF39A1A67235F00104B69 /* storage */,
-				B5CAF3961A67092E00104B69 /* math.test */,
-				B5CAF39C1A6723D100104B69 /* objects */,
 				B5CAF39D1A67242C00104B69 /* commons.h */,
+				B5CAF3961A67092E00104B69 /* math.test */,
 			);
 			path = electronicTest;
 			sourceTree = "<group>";

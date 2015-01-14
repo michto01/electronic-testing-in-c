@@ -134,14 +134,12 @@ int store( const char* filename, Question** questions, int length ) {
          */
         fprintf( file, "\n#%d %s\n", questions[i]->count, questions[i]->description );
         
-        int tmpCount = questions[i]->count;
-        
-        for (int j; j < tmpCount; j++) {
+        for (int j = 0; j < questions[i]->count; j++) {
             /*
              * *$ Correct Answer
              * *  Bad Answer
              */
-            fprintf( file, "*%c %s\n", questions[i]->answers[j]->isCorrect ? '$': ' ', questions[i]->answers[j]->description );
+            fprintf( file, "*%c %s\n", questions[i]->answers[j]->isCorrect, questions[i]->answers[j]->description );
         }
     }
     
