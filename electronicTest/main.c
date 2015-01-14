@@ -134,6 +134,21 @@ int store( const char* filename, Question** questions, int length ) {
     return TRUE;
 }
 
+
+void printQuestion ( Question* question ) {
+    
+}
+
+void printAnswers  ( Question* question ) {
+    
+}
+
+/**
+ *  Object lifecycle
+ *
+ *  @param ans <#ans description#>
+ */
+
 void freeAnswer(Answer* ans) {
     free(ans->description);
     free(ans);

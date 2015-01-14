@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B5CAF38A1A66EE7800104B69 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B5CAF3891A66EE7800104B69 /* main.c */; };
+		B5CAF3991A67235A00104B69 /* storage.c in Sources */ = {isa = PBXBuildFile; fileRef = B5CAF3971A67235A00104B69 /* storage.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,10 @@
 		B5CAF3891A66EE7800104B69 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		B5CAF3901A66EEA700104B69 /* etests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = etests.h; sourceTree = "<group>"; };
 		B5CAF3961A67092E00104B69 /* math.test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = math.test; sourceTree = "<group>"; };
+		B5CAF3971A67235A00104B69 /* storage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = storage.c; path = storage/storage.c; sourceTree = "<group>"; };
+		B5CAF3981A67235A00104B69 /* storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = storage.h; path = storage/storage.h; sourceTree = "<group>"; };
+		B5CAF39B1A6723C500104B69 /* objects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = objects.h; path = objects/objects.h; sourceTree = "<group>"; };
+		B5CAF39D1A67242C00104B69 /* commons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = commons.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +66,29 @@
 			children = (
 				B5CAF3891A66EE7800104B69 /* main.c */,
 				B5CAF3901A66EEA700104B69 /* etests.h */,
+				B5CAF39A1A67235F00104B69 /* storage */,
 				B5CAF3961A67092E00104B69 /* math.test */,
+				B5CAF39C1A6723D100104B69 /* objects */,
+				B5CAF39D1A67242C00104B69 /* commons.h */,
 			);
 			path = electronicTest;
+			sourceTree = "<group>";
+		};
+		B5CAF39A1A67235F00104B69 /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				B5CAF3971A67235A00104B69 /* storage.c */,
+				B5CAF3981A67235A00104B69 /* storage.h */,
+			);
+			name = storage;
+			sourceTree = "<group>";
+		};
+		B5CAF39C1A6723D100104B69 /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				B5CAF39B1A6723C500104B69 /* objects.h */,
+			);
+			name = objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5CAF38A1A66EE7800104B69 /* main.c in Sources */,
+				B5CAF3991A67235A00104B69 /* storage.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

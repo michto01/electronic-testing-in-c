@@ -9,44 +9,9 @@
 #ifndef electronicTest_etests_h
 #define electronicTest_etests_h
 
-
-#include <stdlib.h>
-#include <stdbool.h>
-
-#define QUESTION_SYMBOL '#'
-#define   ANSWER_SYMBOL '*'
-#define  CORRECT_SYMBOL '$'
-
-#define TRUE  1
-#define FALSE 0
-
-typedef struct _answer {
-    unsigned   long id;
-    char       isCorrect;
-    char       isAnswered;
-    char       wasCorrect;
-    char*      description;
-} Answer;
-
-typedef struct _question {
-    unsigned   long id;
-    char*      description;
-    int        count;
-    Answer**   answers;
-} Question;
-
-/*
- *   Presistance layer
- */
-int         store   (const char*, Question**, int);  // save test to file
-Question**  extract (const char*, int*); // read questions from file + show useof pointers with normal type -> like scanf()
-
-/*
- *   Object Lifecycle
- */
-
-void freeAnswer   (Answer*);
-void freeQuestion (Question*);
+#include "commons.h"
+#include "storage/storage.h"
+#include "objects/objects.h"
 
 /*
  *   Controllers
@@ -59,6 +24,7 @@ Answer**    correctAnswers (Answer**);
  *   Presentation layer
  */
 void        printQuestion (Question*);
+void        printAnswers  (Question*);
 
 
 #endif
