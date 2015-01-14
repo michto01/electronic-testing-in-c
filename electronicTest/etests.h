@@ -23,8 +23,9 @@ Answer**    correctAnswers (Answer**);
 /*
  *   Presentation layer
  */
-void        printQuestion (Question*);
+
 void        printAnswers  (Question*);
+void        printQuestion (Question*);
 
 
 #endif
