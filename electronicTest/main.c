@@ -63,6 +63,23 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+double scoreQuestion  ( Question* question ) {
+    printf("Your answer(s): ");
+    
+    question->count;
+    
+    for (int i = 0; i < question->count; i++) {
+        //FixMe & implement
+    }
+    
+    return 0.0f;
+}
+
+/**
+ *  Create new Question Wizard
+ *
+ *  @return return Question* create new question
+ */
 Question* createQuestion() {
     Question* question;
     
